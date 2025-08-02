@@ -425,6 +425,26 @@
                                 </a>
                             </li> <!--end folio-list__item -->
 
+                            <!-- Payroll Management System Project -->
+                            <li class="folio-list__item column" data-animate-el>
+                                <a class="folio-list__item-link" href="#modal-09">
+                                    <div class="folio-list__item-pic">
+                                        <img src="images/gallery/pay.png" alt="Payroll Management System UI">
+                                    </div>
+                                    <div class="folio-list__item-text">
+                                        <div class="folio-list__item-cat">
+                                            HR/Payroll
+                                        </div>
+                                        <div class="folio-list__item-title">
+                                            Payroll Management System
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="folio-list__proj-link" href="#" title="project link">
+                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                                </a>
+                            </li> <!--end folio-list__item -->
+
                         </ul> <!-- end folio-list -->
 
                     </div> <!-- end column -->
@@ -438,8 +458,8 @@
                                 <img class="carousel-image" src="https://i.postimg.cc/2Ss5jBK5/home.png" alt="Weatherly: Modern Weather App" style="width:100%; display:block;">
                                 <img class="carousel-image" src="https://i.postimg.cc/VNXkJLxW/result.png" alt="Weatherly Screenshot 2" style="width:100%; display:none;">
                             
-                                <button class="carousel-arrow left" style="position:absolute;top:50%;left:10px;transform:translateY(-50%);background:#44444400;color:#ffffff;border:none;padding:8px 12px;cursor:pointer;font-size:18px;z-index:2;">&#8592;</button>
-                                <button class="carousel-arrow right" style="position:absolute;top:50%;right:10px;transform:translateY(-50%);background:#44444400;color:#ffffff;border:none;padding:8px 12px;cursor:pointer;font-size:18px;z-index:2;">&#8594;</button>
+                                <button class="carousel-arrow left" style="position:absolute;top:50%;left:10px;transform:translateY(-50%);background:#44444400;color:#ffffff;border:none;padding:8px 12px;cursor:pointer;font-size:25px;z-index:2;">&#8592;</button>
+                                <button class="carousel-arrow right" style="position:absolute;top:50%;right:10px;transform:translateY(-50%);background:#44444400;color:#ffffff;border:none;padding:8px 12px;cursor:pointer;font-size:25px;z-index:2;">&#8594;</button>
                             </div>
                             <script>
                             (function() {
@@ -482,7 +502,41 @@
 
                     <div id="modal-02" hidden>
                         <div class="modal-popup">
-                            <img src="images/portfolio/gallery/g-lamp.jpg" alt="Velvet Vogue: Fashion Store">
+                            <div class="carousel" id="velvet-carousel" style="position: relative; max-width: 100%;">
+                                <img class="carousel-image" src="https://i.postimg.cc/vBBYxfLC/1.png" alt="Velvet Vogue: Fashion Store" style="width:100%; display:block;">
+                                <img class="carousel-image" src="https://i.postimg.cc/ydbVmxLx/2.png" alt="Velvet Vogue Screenshot 2" style="width:100%; display:none;">
+                                <img class="carousel-image" src="https://i.postimg.cc/k57X9kVJ/3.png" alt="Velvet Vogue Screenshot 3" style="width:100%; display:none;">
+                                <img class="carousel-image" src="https://i.postimg.cc/bvLYv3bQ/4.png" alt="Velvet Vogue Screenshot 4" style="width:100%; display:none;">
+                                <img class="carousel-image" src="https://i.postimg.cc/RhJvXmYR/5.png" alt="Velvet Vogue Screenshot 5" style="width:100%; display:none;">
+                                <button class="carousel-arrow left" style="position:absolute;top:50%;left:10px;transform:translateY(-50%);background:#44444400;color:#ffffff;border:none;padding:8px 8px;cursor:pointer;font-size:25px;z-index:2;">&#8592;</button>
+                                <button class="carousel-arrow right" style="position:absolute;top:50%;right:10px;transform:translateY(-50%);background:#44444400;color:#ffffff;border:none;padding:8px 8px;cursor:pointer;font-size:25px;z-index:2;">&#8594;</button>
+                            </div>
+                            <script>
+                            (function() {
+                                var modal = document.getElementById('modal-02');
+                                if (!modal) return;
+                                var carousel = modal.querySelector('.carousel');
+                                if (!carousel) return;
+                                var images = carousel.querySelectorAll('.carousel-image');
+                                var left = carousel.querySelector('.carousel-arrow.left');
+                                var right = carousel.querySelector('.carousel-arrow.right');
+                                var idx = 0;
+                                function show(idxNew) {
+                                    images[idx].style.display = 'none';
+                                    idx = (idxNew + images.length) % images.length;
+                                    images[idx].style.display = 'block';
+                                }
+                                left.onclick = function(e) { e.stopPropagation(); show(idx-1); };
+                                right.onclick = function(e) { e.stopPropagation(); show(idx+1); };
+                                // Optional: keyboard navigation when modal is open
+                                modal.addEventListener('keydown', function(e) {
+                                    if (e.key === 'ArrowLeft') { show(idx-1); }
+                                    if (e.key === 'ArrowRight') { show(idx+1); }
+                                });
+                                // Focus modal for keyboard events
+                                modal.addEventListener('shown', function() { modal.focus(); });
+                            })();
+                            </script>
                             <div class="modal-popup__desc">
                                 <h5>Velvet Vogue: Fashion Store</h5>
                                 <p>Velvet Vogue is a modern, responsive fashion e-commerce website built with HTML, CSS, JavaScript, and PHP. It features a stylish product catalog, shopping cart, user registration and login system, and a contact page. </p>
@@ -493,12 +547,46 @@
                                     <li>Bootstrap</li>
                                 </ul>
                             </div>
-                            <a href="https://www.behance.net/" class="modal-popup__details">Project link</a>                        </div>
+                            <a href="https://hu1man.github.io/velvet-vogue/" target="_blank" class="modal-popup__details">Project link</a></div>
                     </div> <!-- end modal -->
 
                     <div id="modal-03" hidden>
                         <div class="modal-popup">
-                            <img src="images/portfolio/gallery/g-rucksack.jpg" alt="Fresh Grocers: Grocery Delivery">
+                            <div class="carousel" id="fresh-carousel" style="position: relative; max-width: 100%;">
+                                <img class="carousel-image" src="https://i.postimg.cc/BZXRpwvd/homepage.png" alt="Fresh Grocers: Grocery Delivery" style="width:100%; display:block;">
+                                <img class="carousel-image" src="https://i.postimg.cc/w3YsCmzn/order-section.png" alt="Fresh Grocers Screenshot 2" style="width:100%; display:none;">
+                                <img class="carousel-image" src="https://i.postimg.cc/15F2hnwB/order-success.png" alt="Fresh Grocers Screenshot 3" style="width:100%; display:none;">
+                                <img class="carousel-image" src="https://i.postimg.cc/t4HfXqzj/rate.png" alt="Fresh Grocers Screenshot 4" style="width:100%; display:none;">
+                                <img class="carousel-image" src="https://i.postimg.cc/6QWmvMSb/register.png" alt="Fresh Grocers Screenshot 5" style="width:100%; display:none;">
+                                <button class="carousel-arrow left" style="position:absolute;top:50%;left:10px;transform:translateY(-50%);background:#44444400;color:#000000;border:none;padding:8px 8px;cursor:pointer;font-size:25px;z-index:2;">&#8592;</button>
+                                <button class="carousel-arrow right" style="position:absolute;top:50%;right:10px;transform:translateY(-50%);background:#44444400;color:#000000;border:none;padding:8px 8px;cursor:pointer;font-size:25px;z-index:2;">&#8594;</button>
+                            </div>
+                            <script>
+                            (function() {
+                                var modal = document.getElementById('modal-03');
+                                if (!modal) return;
+                                var carousel = modal.querySelector('.carousel');
+                                if (!carousel) return;
+                                var images = carousel.querySelectorAll('.carousel-image');
+                                var left = carousel.querySelector('.carousel-arrow.left');
+                                var right = carousel.querySelector('.carousel-arrow.right');
+                                var idx = 0;
+                                function show(idxNew) {
+                                    images[idx].style.display = 'none';
+                                    idx = (idxNew + images.length) % images.length;
+                                    images[idx].style.display = 'block';
+                                }
+                                left.onclick = function(e) { e.stopPropagation(); show(idx-1); };
+                                right.onclick = function(e) { e.stopPropagation(); show(idx+1); };
+                                // Optional: keyboard navigation when modal is open
+                                modal.addEventListener('keydown', function(e) {
+                                    if (e.key === 'ArrowLeft') { show(idx-1); }
+                                    if (e.key === 'ArrowRight') { show(idx+1); }
+                                });
+                                // Focus modal for keyboard events
+                                modal.addEventListener('shown', function() { modal.focus(); });
+                            })();
+                            </script>
                             <div class="modal-popup__desc">
                                 <h5>Fresh Grocers: Grocery Delivery</h5>
                                 <p>A web-based grocery ordering and delivery management system for customers, customer service representatives (CSR), and delivery agents. Built with PHP, MySQL, and Bootstrap.</p>
@@ -509,12 +597,46 @@
                                     <li>MySQL</li>
                                 </ul>
                             </div>
-                            <a href="https://www.behance.net/" class="modal-popup__details">Project link</a>                        </div>
+                            <a href="https://github.com/hu1man/fresh-grocers" target="_blank" class="modal-popup__details">Project link</a></div>
                     </div> <!-- end modal -->
 
                     <div id="modal-04" hidden>
                         <div class="modal-popup">
-                            <img src="images/portfolio/gallery/g-skaterboy.jpg" alt="ETCP: Eco-Tourism Cloud Platform">
+                            <div class="carousel" id="ETCP-carousel" style="position: relative; max-width: 100%;">
+                                <img class="carousel-image" src="https://i.postimg.cc/HW9HXMcK/home.png" alt="ETCP: Eco-Tourism Cloud Platform" style="width:100%; display:block;">
+                                <img class="carousel-image" src="https://i.postimg.cc/LXzSyYyJ/discover.png" alt="ETCP Screenshot 2" style="width:100%; display:none;">
+                                <img class="carousel-image" src="https://i.postimg.cc/nrpJNF50/details.png" alt="ETCP Screenshot 3" style="width:100%; display:none;">
+                                <img class="carousel-image" src="https://i.postimg.cc/7h9k4vrD/planner.png" alt="ETCP Screenshot 4" style="width:100%; display:none;">
+                                <img class="carousel-image" src="https://i.postimg.cc/8CfN6nMB/book-exp.png" alt="ETCP Screenshot 5" style="width:100%; display:none;">
+                                <button class="carousel-arrow left" style="position:absolute;top:50%;left:10px;transform:translateY(-50%);background:#44444400;color:#000000;border:none;padding:8px 8px;cursor:pointer;font-size:25px;z-index:2;">&#8592;</button>
+                                <button class="carousel-arrow right" style="position:absolute;top:50%;right:10px;transform:translateY(-50%);background:#44444400;color:#000000;border:none;padding:8px 8px;cursor:pointer;font-size:25px;z-index:2;">&#8594;</button>
+                            </div>
+                            <script>
+                            (function() {
+                                var modal = document.getElementById('modal-04');
+                                if (!modal) return;
+                                var carousel = modal.querySelector('.carousel');
+                                if (!carousel) return;
+                                var images = carousel.querySelectorAll('.carousel-image');
+                                var left = carousel.querySelector('.carousel-arrow.left');
+                                var right = carousel.querySelector('.carousel-arrow.right');
+                                var idx = 0;
+                                function show(idxNew) {
+                                    images[idx].style.display = 'none';
+                                    idx = (idxNew + images.length) % images.length;
+                                    images[idx].style.display = 'block';
+                                }
+                                left.onclick = function(e) { e.stopPropagation(); show(idx-1); };
+                                right.onclick = function(e) { e.stopPropagation(); show(idx+1); };
+                                // Optional: keyboard navigation when modal is open
+                                modal.addEventListener('keydown', function(e) {
+                                    if (e.key === 'ArrowLeft') { show(idx-1); }
+                                    if (e.key === 'ArrowRight') { show(idx+1); }
+                                });
+                                // Focus modal for keyboard events
+                                modal.addEventListener('shown', function() { modal.focus(); });
+                            })();
+                            </script>
                             <div class="modal-popup__desc">
                                 <h5>ETCP: Eco-Tourism Cloud Platform</h5>
                                 <p>This is a responsive, eco-friendly website prototype for the Eco-Tourism Cloud Platform (ETCP).</p>
@@ -524,12 +646,46 @@
                                     <li>Prototype</li>
                                 </ul>
                             </div>
-                            <a href="https://www.behance.net/" class="modal-popup__details">Project link</a>                        </div>
+                            <a href="https://hu1man.github.io/Eco-Tourism-Cloud-Platform/index.html" class="modal-popup__details">Project link</a>                        </div>
                     </div> <!-- end modal -->
 
                     <div id="modal-05" hidden>
                         <div class="modal-popup">
-                            <img src="images/portfolio/gallery/g-sanddunes.jpg" alt="Quiet Attic Films: Production Manager">
+                            <div class="carousel" id="quiet-carousel" style="position: relative; max-width: 100%;">
+                                <img class="carousel-image" src="https://i.postimg.cc/W3Pt8JGy/home.png" alt="Quiet Attic Films: Production Manager" style="width:100%; display:block;">
+                                <img class="carousel-image" src="https://i.postimg.cc/vBLTNHXZ/insert.png" alt="Quiet Attic Films Screenshot 2" style="width:100%; display:none;">
+                                <img class="carousel-image" src="https://i.postimg.cc/rwKdwTyf/add.png" alt="Quiet Attic Films Screenshot 3" style="width:100%; display:none;">
+                                <img class="carousel-image" src="https://i.postimg.cc/Y0r0KKyf/update.png" alt="Quiet Attic Films Screenshot 4" style="width:100%; display:none;">
+                                <img class="carousel-image" src="https://i.postimg.cc/sgqMBLvs/delete.png" alt="Quiet Attic Films Screenshot 5" style="width:100%; display:none;">
+                                <button class="carousel-arrow left" style="position:absolute;top:50%;left:10px;transform:translateY(-50%);background:#44444400;color:#ffffff;border:none;padding:8px 8px;cursor:pointer;font-size:25px;z-index:2;">&#8592;</button>
+                                <button class="carousel-arrow right" style="position:absolute;top:50%;right:10px;transform:translateY(-50%);background:#44444400;color:#ffffff;border:none;padding:8px 8px;cursor:pointer;font-size:25px;z-index:2;">&#8594;</button>
+                            </div>
+                            <script>
+                            (function() {
+                                var modal = document.getElementById('modal-05');
+                                if (!modal) return;
+                                var carousel = modal.querySelector('.carousel');
+                                if (!carousel) return;
+                                var images = carousel.querySelectorAll('.carousel-image');
+                                var left = carousel.querySelector('.carousel-arrow.left');
+                                var right = carousel.querySelector('.carousel-arrow.right');
+                                var idx = 0;
+                                function show(idxNew) {
+                                    images[idx].style.display = 'none';
+                                    idx = (idxNew + images.length) % images.length;
+                                    images[idx].style.display = 'block';
+                                }
+                                left.onclick = function(e) { e.stopPropagation(); show(idx-1); };
+                                right.onclick = function(e) { e.stopPropagation(); show(idx+1); };
+                                // Optional: keyboard navigation when modal is open
+                                modal.addEventListener('keydown', function(e) {
+                                    if (e.key === 'ArrowLeft') { show(idx-1); }
+                                    if (e.key === 'ArrowRight') { show(idx+1); }
+                                });
+                                // Focus modal for keyboard events
+                                modal.addEventListener('shown', function() { modal.focus(); });
+                            })();
+                            </script>
                             <div class="modal-popup__desc">
                                 <h5>Quiet Attic Films: Production Manager</h5>
                                 <p>Welcome to the Quiet Attic Films Database System! This web application helps you manage film productions and client information with a modern, minimalistic interface.</p>
@@ -539,12 +695,44 @@
                                     <li>Minimal UI</li>
                                 </ul>
                             </div>
-                            <a href="https://www.behance.net/" class="modal-popup__details">Project link</a>                        </div>
+                            <a href="https://github.com/hu1man/quietatticfilms" target="_blank" class="modal-popup__details">Project link</a>
+                        </div>
                     </div> <!-- end modal -->
 
                     <div id="modal-06" hidden>
                         <div class="modal-popup">
-                            <img src="images/portfolio/gallery/g-minimalismo.jpg" alt="CryptoDash: Crypto Dashboard">
+                            <div class="carousel" id="crypto-carousel" style="position: relative; max-width: 100%;">
+                                <img class="carousel-image" src="https://i.postimg.cc/Dy7vM63n/home.png" alt="CryptoDash: Crypto Dashboard" style="width:100%; display:block;">
+                                <img class="carousel-image" src="https://i.postimg.cc/tR3RkffB/solana.png" alt="CryptoDash Screenshot 2" style="width:100%; display:none;">
+                                <button class="carousel-arrow left" style="position:absolute;top:50%;left:10px;transform:translateY(-50%);background:#44444400;color:#ffffff;border:none;padding:8px 8px;cursor:pointer;font-size:25px;z-index:2;">&#8592;</button>
+                                <button class="carousel-arrow right" style="position:absolute;top:50%;right:10px;transform:translateY(-50%);background:#44444400;color:#ffffff;border:none;padding:8px 8px;cursor:pointer;font-size:25px;z-index:2;">&#8594;</button>
+                            </div>
+                            <script>
+                            (function() {
+                                var modal = document.getElementById('modal-06');
+                                if (!modal) return;
+                                var carousel = modal.querySelector('.carousel');
+                                if (!carousel) return;
+                                var images = carousel.querySelectorAll('.carousel-image');
+                                var left = carousel.querySelector('.carousel-arrow.left');
+                                var right = carousel.querySelector('.carousel-arrow.right');
+                                var idx = 0;
+                                function show(idxNew) {
+                                    images[idx].style.display = 'none';
+                                    idx = (idxNew + images.length) % images.length;
+                                    images[idx].style.display = 'block';
+                                }
+                                left.onclick = function(e) { e.stopPropagation(); show(idx-1); };
+                                right.onclick = function(e) { e.stopPropagation(); show(idx+1); };
+                                // Optional: keyboard navigation when modal is open
+                                modal.addEventListener('keydown', function(e) {
+                                    if (e.key === 'ArrowLeft') { show(idx-1); }
+                                    if (e.key === 'ArrowRight') { show(idx+1); }
+                                });
+                                // Focus modal for keyboard events
+                                modal.addEventListener('shown', function() { modal.focus(); });
+                            })();
+                            </script>
                             <div class="modal-popup__desc">
                                 <h5>CryptoDash: Crypto Dashboard</h5>
                                 <p>A professional-grade React + Tailwind CSS crypto price dashboard web application using CoinGecko’s public API for real-time crypto data.</p>
@@ -555,13 +743,44 @@
                                     <li>Tailwind CSS</li>
                                 </ul>
                             </div>
-                            <a href="https://www.behance.net/" class="modal-popup__details">Project link</a>                        </div>
+                            <a href="https://crypto-hub-human.netlify.app/" target="_blank" class="modal-popup__details">Project link</a></div>
                     </div> <!-- end modal -->
 
                     <!-- Modal for YouTube Downloader -->
                     <div id="modal-07" hidden>
                         <div class="modal-popup">
-                            <img src="images/portfolio/gallery/g-fuji.jpg" alt="YouTube Downloader">
+                            <div class="carousel" id="yt-carousel" style="position: relative; max-width: 100%;">
+                                <img class="carousel-image" src="https://i.postimg.cc/zGWxHC3H/home.png" alt="YouTube Downloader" style="width:100%; display:block;">
+                                <img class="carousel-image" src="https://i.postimg.cc/fyCfq40V/result.png" alt="YouTube Downloader Screenshot 2" style="width:100%; display:none;">
+                                <button class="carousel-arrow left" style="position:absolute;top:50%;left:10px;transform:translateY(-50%);background:#44444400;color:#ffffff;border:none;padding:8px 8px;cursor:pointer;font-size:25px;z-index:2;">&#8592;</button>
+                                <button class="carousel-arrow right" style="position:absolute;top:50%;right:10px;transform:translateY(-50%);background:#44444400;color:#ffffff;border:none;padding:8px 8px;cursor:pointer;font-size:25px;z-index:2;">&#8594;</button>
+                            </div>
+                            <script>
+                            (function() {
+                                var modal = document.getElementById('modal-07');
+                                if (!modal) return;
+                                var carousel = modal.querySelector('.carousel');
+                                if (!carousel) return;
+                                var images = carousel.querySelectorAll('.carousel-image');
+                                var left = carousel.querySelector('.carousel-arrow.left');
+                                var right = carousel.querySelector('.carousel-arrow.right');
+                                var idx = 0;
+                                function show(idxNew) {
+                                    images[idx].style.display = 'none';
+                                    idx = (idxNew + images.length) % images.length;
+                                    images[idx].style.display = 'block';
+                                }
+                                left.onclick = function(e) { e.stopPropagation(); show(idx-1); };
+                                right.onclick = function(e) { e.stopPropagation(); show(idx+1); };
+                                // Optional: keyboard navigation when modal is open
+                                modal.addEventListener('keydown', function(e) {
+                                    if (e.key === 'ArrowLeft') { show(idx-1); }
+                                    if (e.key === 'ArrowRight') { show(idx+1); }
+                                });
+                                // Focus modal for keyboard events
+                                modal.addEventListener('shown', function() { modal.focus(); });
+                            })();
+                            </script>
                             <div class="modal-popup__desc">
                                 <h5>YouTube Downloader</h5>
                                 <p>A modern, full-stack web application to download YouTube videos in any available quality with audio. Built with React (Vite, TailwindCSS) for the frontend and Node.js (Express, yt-dlp, ffmpeg) for the backend, it provides a seamless and fast download experience.</p>
@@ -575,13 +794,47 @@
                                     <li>TailwindCSS</li>
                                 </ul>
                             </div>
-                            <a href="https://www.behance.net/" class="modal-popup__details">Project link</a>                        </div>
+                            <a href="https://yt-download-humans.netlify.app/" target="_blank" class="modal-popup__details">Project link</a></div>
                     </div> <!-- end modal -->
 
                     <!-- Modal for Simple War Game -->
                     <div id="modal-08" hidden>
                         <div class="modal-popup">
-                            <img src="images/portfolio/gallery/g-lamp.jpg" alt="Simple War Game">
+                            <div class="carousel" id="war-carousel" style="position: relative; max-width: 100%;">
+                                <img class="carousel-image" src="https://i.postimg.cc/8cGjJjcv/player.png" alt="Simple War Game Screenshot 2" style="width:100%; display:block;">
+                                <img class="carousel-image" src="https://i.postimg.cc/GpZBRM1q/dash.png" alt="Simple War Game" style="width:100%; display:none;">
+                                <img class="carousel-image" src="https://i.postimg.cc/qRyNv8J0/badges.png" alt="Simple War Game Screenshot 3" style="width:100%; display:none;">
+                                <img class="carousel-image" src="https://i.postimg.cc/3NZWgY0c/rewards.png" alt="Simple War Game Screenshot 4" style="width:100%; display:none;">
+                                <img class="carousel-image" src="https://i.postimg.cc/7LCCjFj5/game.png" alt="Simple War Game Screenshot 5" style="width:100%; display:none;">
+                                <button class="carousel-arrow left" style="position:absolute;top:50%;left:10px;transform:translateY(-50%);background:#44444400;color:#ffffff;border:none;padding:8px 8px;cursor:pointer;font-size:25px;z-index:2;">&#8592;</button>
+                                <button class="carousel-arrow right" style="position:absolute;top:50%;right:10px;transform:translateY(-50%);background:#44444400;color:#ffffff;border:none;padding:8px 8px;cursor:pointer;font-size:25px;z-index:2;">&#8594;</button>
+                            </div>
+                            <script>
+                            (function() {
+                                var modal = document.getElementById('modal-08');
+                                if (!modal) return;
+                                var carousel = modal.querySelector('.carousel');
+                                if (!carousel) return;
+                                var images = carousel.querySelectorAll('.carousel-image');
+                                var left = carousel.querySelector('.carousel-arrow.left');
+                                var right = carousel.querySelector('.carousel-arrow.right');
+                                var idx = 0;
+                                function show(idxNew) {
+                                    images[idx].style.display = 'none';
+                                    idx = (idxNew + images.length) % images.length;
+                                    images[idx].style.display = 'block';
+                                }
+                                left.onclick = function(e) { e.stopPropagation(); show(idx-1); };
+                                right.onclick = function(e) { e.stopPropagation(); show(idx+1); };
+                                // Optional: keyboard navigation when modal is open
+                                modal.addEventListener('keydown', function(e) {
+                                    if (e.key === 'ArrowLeft') { show(idx-1); }
+                                    if (e.key === 'ArrowRight') { show(idx+1); }
+                                });
+                                // Focus modal for keyboard events
+                                modal.addEventListener('shown', function() { modal.focus(); });
+                            })();
+                            </script>
                             <div class="modal-popup__desc">
                                 <h5>Simple War Game</h5>
                                 <p>A full-stack web application where players can register, battle, earn badges, climb the leaderboard, and unlock rewards. Built with React (frontend) and Node.js/Express/Sequelize (backend) using a MySQL database, it offers an engaging and competitive gaming experience.</p>
@@ -594,7 +847,61 @@
                                     <li>MySQL</li>
                                 </ul>
                             </div>
-                            <a href="https://www.behance.net/" class="modal-popup__details">Project link</a>                        </div>
+                            <a href="https://github.com/hu1man/Game/tree/main/legendary-game" target="_blank" class="modal-popup__details">Project link</a></div>
+                    </div> <!-- end modal -->
+
+                    <!-- Modal for Payroll Management System -->
+                    <div id="modal-09" hidden>
+                        <div class="modal-popup">
+                            <div class="carousel" id="payroll-carousel" style="position: relative; max-width: 100%;">
+                                <img class="carousel-image" src="https://i.postimg.cc/mZvpwLJH/Screenshot-1702.png" alt="Payroll Management System Screenshot 1" style="width:100%; display:block;">
+                                <img class="carousel-image" src="https://i.postimg.cc/tJxSjwZJ/Screenshot-1703.png" alt="Payroll Management System Screenshot 2" style="width:100%; display:none;">
+                                <img class="carousel-image" src="https://i.postimg.cc/m27X6xW6/Screenshot-1704.png" alt="Payroll Management System Screenshot 3" style="width:100%; display:none;">
+                                <img class="carousel-image" src="https://i.postimg.cc/zG5dsdJD/Screenshot-1706.png" alt="Payroll Management System Screenshot 5" style="width:100%; display:none;">
+                                <img class="carousel-image" src="https://i.postimg.cc/BZLwHLY3/Screenshot-1705.png" alt="Payroll Management System Screenshot 4" style="width:100%; display:none;">
+                                <button class="carousel-arrow left" style="position:absolute;top:50%;left:10px;transform:translateY(-50%);background:#44444400;color:#ffffff;border:none;padding:8px 8px;cursor:pointer;font-size:25px;z-index:2;">&#8592;</button>
+                                <button class="carousel-arrow right" style="position:absolute;top:50%;right:10px;transform:translateY(-50%);background:#44444400;color:#ffffff;border:none;padding:8px 8px;cursor:pointer;font-size:25px;z-index:2;">&#8594;</button>
+                            </div>
+                            <script>
+                            (function() {
+                                var modal = document.getElementById('modal-09');
+                                if (!modal) return;
+                                var carousel = modal.querySelector('.carousel');
+                                if (!carousel) return;
+                                var images = carousel.querySelectorAll('.carousel-image');
+                                var left = carousel.querySelector('.carousel-arrow.left');
+                                var right = carousel.querySelector('.carousel-arrow.right');
+                                var idx = 0;
+                                function show(idxNew) {
+                                    images[idx].style.display = 'none';
+                                    idx = (idxNew + images.length) % images.length;
+                                    images[idx].style.display = 'block';
+                                }
+                                left.onclick = function(e) { e.stopPropagation(); show(idx-1); };
+                                right.onclick = function(e) { e.stopPropagation(); show(idx+1); };
+                                // Optional: keyboard navigation when modal is open
+                                modal.addEventListener('keydown', function(e) {
+                                    if (e.key === 'ArrowLeft') { show(idx-1); }
+                                    if (e.key === 'ArrowRight') { show(idx+1); }
+                                });
+                                // Focus modal for keyboard events
+                                modal.addEventListener('shown', function() { modal.focus(); });
+                            })();
+                            </script>
+                            <div class="modal-popup__desc">
+                                <h5>Payroll Management System</h5>
+                                <p>A user-friendly payroll management system designed to automate salary calculations, manage employee details, handle overtime, no-pay, allowances, and generate accurate monthly salary reports for efficient HR operations.</p>
+                                <ul class="modal-popup__cat">
+                                    <li>Payroll</li>
+                                    <li>HR</li>
+                                    <li>Salary Automation</li>
+                                    <li>Employee Management</li>
+                                    <li>Reports</li>
+                                    <li>Web App</li>
+                                </ul>
+                            </div>
+                            <a href="https://github.com/hu1man/Grifindo-Toys" target="_blank" class="modal-popup__details">Project link</a>
+                        </div>
                     </div> <!-- end modal -->
 
                 </div> <!-- end works-portfolio -->
